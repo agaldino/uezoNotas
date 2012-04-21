@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, UezoNotasActivity!</string>
+    <string name="app_name">UezoNotas</string>
+    <color name="Red">#FF0000</color>
+    <string name="inet">Tsc tentando acessar sem internet?...Deve ser calouro!</string>
+    <string name="app"><b>Aplicação:</b></string>
+    <string name="appdesc">UezoNotas, App desenvolvido para acessar a grade de notas da UEZO de forma mais prática.</string>
+    <string name="dev"><b>André Galdino</b></string>
+    <string name="devdesc">Analise e Desenvolvimento de Sistemas - UEZO</string>
+    <string name="devemail">andre.gs3@gmail.com</string>
+    <string name="matricula">Matricula</string>
+    <string name="senha">Senha</string>
+    <string name="versao">Versão 1.0</string>
+    <string name="colab">Colaboração: Background por Júlio César.</string>
+
+</resources>

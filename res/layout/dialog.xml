@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/inetstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"       
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/inet"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/inetok"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:text="OK" />
+
+</LinearLayout>
