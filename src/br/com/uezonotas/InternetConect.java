@@ -1,5 +1,11 @@
 package br.com.uezonotas;
 
+/*
+ * Autor: André Galdino da Silveira
+ * 
+ * Teste de conectividade com a internet.
+ * */
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

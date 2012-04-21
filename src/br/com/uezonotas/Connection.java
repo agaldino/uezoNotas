@@ -1,5 +1,11 @@
 package br.com.uezonotas;
 
+/*
+ * Autor: André Galdino da Silveira
+ * 
+ * Classe responsavél pela conexão usando HttpClient
+ * */
+
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;

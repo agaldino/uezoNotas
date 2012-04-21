@@ -1,5 +1,11 @@
 package br.com.uezonotas;
 
+/*
+ * Autor: André Galdino da Silveira
+ *
+ * Activity principal.
+ * */
+
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;

@@ -1,5 +1,11 @@
 package br.com.uezonotas;
 
+/*
+ * Autor: André Galdino da Silveira
+ * 
+ * Classe de teste para exibir o webview.
+ * */
+
 import org.apache.http.cookie.Cookie;
 import android.webkit.SslErrorHandler;
 import android.net.http.SslError;
