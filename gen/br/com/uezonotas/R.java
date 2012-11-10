@@ -34,22 +34,39 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
-        public static final int connect=0x7f090006;
+        public static final int LinearLayout2=0x7f090003;
+        public static final int RelativeLayout1=0x7f09000d;
+        public static final int codMateria=0x7f09000f;
+        public static final int connect=0x7f09000c;
         public static final int inetok=0x7f090002;
         public static final int inetstatus=0x7f090001;
-        public static final int linearLayout1=0x7f090003;
-        public static final int matTxt=0x7f090004;
-        public static final int passwdTxt=0x7f090005;
-        public static final int sobre=0x7f090007;
-        public static final int webTeste=0x7f090008;
+        public static final int linearLayout1=0x7f090009;
+        public static final int listAll=0x7f090008;
+        public static final int listMaterias=0x7f090006;
+        public static final int matTxt=0x7f09000a;
+        public static final int passwdTxt=0x7f09000b;
+        public static final int sobre=0x7f090010;
+        public static final int tabAll=0x7f090007;
+        public static final int tabPeriodo=0x7f090005;
+        public static final int tabhost=0x7f090004;
+        public static final int txtNmMateria=0x7f09000e;
+        public static final int webTeste=0x7f090011;
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int dev=0x7f030001;
         public static final int dialog=0x7f030002;
-        public static final int main=0x7f030003;
-        public static final int menu=0x7f030004;
-        public static final int teste=0x7f030005;
+        public static final int grades=0x7f030003;
+        public static final int main=0x7f030004;
+        public static final int materias=0x7f030005;
+        public static final int materiasall=0x7f030006;
+        public static final int menu=0x7f030007;
+        public static final int teste=0x7f030008;
+    }
+    public static final class matall {
+        public static final int codMateria=0x7f0a0001;
+        public static final int periodo=0x7f0a0002;
+        public static final int txtNmMateria=0x7f0a0000;
     }
     public static final class raw {
         public static final int mycert=0x7f040000;

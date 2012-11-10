@@ -18,8 +18,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.CookieStore;
+
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.params.ConnManagerPNames;
@@ -28,28 +29,31 @@ import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
+
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
+
+import android.content.Context;
 
 public class Connection {
 
 	private DefaultHttpClient client;
 	private HttpPost httppost;
-	private HttpResponse response;
-	private CookieStore cookieStore;
-	private HttpContext context;
-	private HttpEntity entity;
 	public static Cookie cookie = null;
 	public static String url = "https://www.uezo.rj.gov.br/aluno/log_in_aluno.php";
 	List<Cookie> Cookies;
 
-	public void connect(List<NameValuePair> data)
+	HttpGet httpget;
+	public static String urlNotas = "https://www.uezo.rj.gov.br/aluno/boletim_aluno_b.php";
+	
+	ER_Filter filter = new ER_Filter();
+
+	public void connect(List<NameValuePair> data, Context context)
 			throws ClientProtocolException, IOException,
 			KeyManagementException, NoSuchAlgorithmException,
 			KeyStoreException, UnrecoverableKeyException {
@@ -70,31 +74,31 @@ public class Connection {
 
 		ClientConnectionManager cm = new SingleClientConnManager(params,
 				schemeRegistry);
+
 		// HttpClient da conexão
 		this.client = new DefaultHttpClient(cm, params);
-
-		/*
-		 * 
-		 * 
-		 */
 
 		// Post na pagina & Cookies
 		httppost = new HttpPost(url);
 		httppost.setEntity(new UrlEncodedFormEntity(data, HTTP.UTF_8));
-
-		// Cookies
-		cookieStore = new BasicCookieStore();
-		// context.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-		// response =
-		// entity = response.getEntity();
-
 		client.execute(httppost);
 
 		Cookies = client.getCookieStore().getCookies();
-		
+
 		for (int i = 0; i < Cookies.size(); i++) {
 			cookie = Cookies.get(i);
 		}
+
+		// Get da pagina
+		httpget = new HttpGet(urlNotas);
+		HttpResponse get;
+
+		get = client.execute(httpget);
+		HttpEntity entity = get.getEntity();
+		String html = EntityUtils.toString(entity);
+		
+		filter.datafilter(html, context);
+
 	}
 
 }

@@ -12,7 +12,9 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Date;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -26,7 +28,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,11 +50,17 @@ public class UezoNotasActivity extends Activity {
 
 	public static final int SOBRE = 0;
 	public static final int DEV = 1;
+	public static String PERIODO= "";
+	Calendar c = Calendar.getInstance();	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		PERIODO = String.valueOf(c.get(Calendar.YEAR));
+		PERIODO += "_";
+		PERIODO += c.get(Calendar.MONTH) >= 7 ? "2": "1"; 
 
 		handler = new Handler();
 
@@ -71,7 +78,6 @@ public class UezoNotasActivity extends Activity {
 			builder.setTitle("Sem conexão com a internet :(");
 			builder.setPositiveButton("Ok",
 					new DialogInterface.OnClickListener() {
-						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.cancel();
 						}
@@ -79,7 +85,7 @@ public class UezoNotasActivity extends Activity {
 			builder.show();
 		}
 
-		// //////////////////////////////////////
+		////////////////////////////////////////
 
 		connect.setOnClickListener(new View.OnClickListener() {
 
@@ -94,14 +100,14 @@ public class UezoNotasActivity extends Activity {
 
 						try {
 
-							mat = matTxt.getText().toString();
-							pwd = passwdTxt.getText().toString();
+							mat = "1111311005";//matTxt.getText().toString();
+							pwd = "RM123";//passwdTxt.getText().toString();
 
 							data.add(new BasicNameValuePair("username", mat));
 							data.add(new BasicNameValuePair("password", pwd));
 
 							try {
-								connection.connect(data);
+								connection.connect(data, getApplicationContext());
 
 							} catch (ClientProtocolException e) {
 								e.printStackTrace();
@@ -133,7 +139,6 @@ public class UezoNotasActivity extends Activity {
 	public void tratamento() {
 		handler.post(new Runnable() {
 
-			@Override
 			public void run() {
 				if (Connection.cookie == null) {
 					AlertDialog.Builder auth = new AlertDialog.Builder(
@@ -143,7 +148,6 @@ public class UezoNotasActivity extends Activity {
 					auth.setTitle("Falha na Autenticação");
 					auth.setPositiveButton("OK",
 							new DialogInterface.OnClickListener() {
-								@Override
 								public void onClick(DialogInterface auth,
 										int which) {
 									auth.cancel();
@@ -151,9 +155,9 @@ public class UezoNotasActivity extends Activity {
 							});
 					auth.show();
 				} else {
-					Intent teste = new Intent(UezoNotasActivity.this,
-							teste.class);
-					startActivity(teste);
+					Intent Grades = new Intent(UezoNotasActivity.this,
+							Grades.class);
+					startActivity(Grades);
 				}
 			}
 
@@ -175,13 +179,9 @@ public class UezoNotasActivity extends Activity {
 		case SOBRE:
 			final Dialog about = new Dialog(this);
 			about.setContentView(R.layout.about);
-			// about.setTitle("Sobre");
-			TextView app = (TextView) about.findViewById(R.about.app);
-			TextView appdesc = (TextView) about.findViewById(R.about.appdesc);
 			Button ok = (Button) about.findViewById(R.about.ok);
 			ok.setOnClickListener(new View.OnClickListener() {
 
-				@Override
 				public void onClick(View v) {
 					about.dismiss();
 
@@ -192,15 +192,9 @@ public class UezoNotasActivity extends Activity {
 		case DEV:
 			final Dialog dev = new Dialog(this);
 			dev.setContentView(R.layout.dev);
-			// dev.setTitle("Desenvolvedor");
-			TextView developer = (TextView) dev.findViewById(R.dev.dev);
-			TextView devdesc = (TextView) dev.findViewById(R.dev.devdesc);
-			TextView devemail = (TextView) dev.findViewById(R.dev.devemail);
-			TextView colab = (TextView) dev.findViewById(R.dev.colab);
 			Button devOk = (Button) dev.findViewById(R.dev.devOk);
 			devOk.setOnClickListener(new View.OnClickListener() {
 
-				@Override
 				public void onClick(View v) {
 					dev.dismiss();
 
