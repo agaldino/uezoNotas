@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Grades" android:label="@string/app_name"></activity>
+<<<<<<< HEAD
         <activity android:name=".ER_Filter" android:label="@string/app_name"></activity>
+=======
+>>>>>>> f0b3e21cbc1d0ad75058cc1fbbcd6c143174d954
     </application>
 
 </manifest> 

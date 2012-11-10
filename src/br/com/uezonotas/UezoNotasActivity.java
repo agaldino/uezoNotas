@@ -179,6 +179,11 @@ public class UezoNotasActivity extends Activity {
 		case SOBRE:
 			final Dialog about = new Dialog(this);
 			about.setContentView(R.layout.about);
+
+			// about.setTitle("Sobre");
+			/*TextView app = (TextView) about.findViewById(R.about.app);
+			TextView appdesc = (TextView) about.findViewById(R.about.appdesc);*/
+
 			Button ok = (Button) about.findViewById(R.about.ok);
 			ok.setOnClickListener(new View.OnClickListener() {
 
@@ -192,6 +197,12 @@ public class UezoNotasActivity extends Activity {
 		case DEV:
 			final Dialog dev = new Dialog(this);
 			dev.setContentView(R.layout.dev);
+			// dev.setTitle("Desenvolvedor");
+			/*TextView developer = (TextView) dev.findViewById(R.dev.dev);
+			TextView devdesc = (TextView) dev.findViewById(R.dev.devdesc);
+			TextView devemail = (TextView) dev.findViewById(R.dev.devemail);
+			TextView colab = (TextView) dev.findViewById(R.dev.colab);*/
+
 			Button devOk = (Button) dev.findViewById(R.dev.devOk);
 			devOk.setOnClickListener(new View.OnClickListener() {
 

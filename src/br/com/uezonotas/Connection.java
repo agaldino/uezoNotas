@@ -13,8 +13,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -36,14 +34,24 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
+<<<<<<< HEAD
 import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
+=======
+
+>>>>>>> f0b3e21cbc1d0ad75058cc1fbbcd6c143174d954
 
 public class Connection {
 
 	private DefaultHttpClient client;
 	private HttpPost httppost;
+<<<<<<< HEAD
+=======
+	//private HttpResponse response;	
+	//private HttpContext context;
+	//private HttpEntity entity;
+>>>>>>> f0b3e21cbc1d0ad75058cc1fbbcd6c143174d954
 	public static Cookie cookie = null;
 	public static String url = "https://www.uezo.rj.gov.br/aluno/log_in_aluno.php";
 	List<Cookie> Cookies;
@@ -81,6 +89,15 @@ public class Connection {
 		// Post na pagina & Cookies
 		httppost = new HttpPost(url);
 		httppost.setEntity(new UrlEncodedFormEntity(data, HTTP.UTF_8));
+<<<<<<< HEAD
+=======
+
+		// Cookies		
+		// context.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+		// response =
+		// entity = response.getEntity();
+
+>>>>>>> f0b3e21cbc1d0ad75058cc1fbbcd6c143174d954
 		client.execute(httppost);
 
 		Cookies = client.getCookieStore().getCookies();
