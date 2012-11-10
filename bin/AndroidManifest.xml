@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Grades" android:label="@string/app_name"></activity>
+
         <activity android:name=".ER_Filter" android:label="@string/app_name"></activity>
+
     </application>
 
 </manifest> 
