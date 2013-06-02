@@ -6,18 +6,11 @@ package br.com.uezonotas;
  * Activity principal.
  * */
 
-import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Date;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
@@ -45,24 +38,28 @@ public class UezoNotasActivity extends Activity {
 	Connection connection = new Connection();
 	List<NameValuePair> data = new ArrayList<NameValuePair>(1);
 	InternetConect ic = new InternetConect();
+	ER_Filter filter = new ER_Filter();
+	DBManager db;
 	ProgressDialog progress;
 	Handler handler;
 
 	public static final int SOBRE = 0;
 	public static final int DEV = 1;
-	public static String PERIODO= "";
-	Calendar c = Calendar.getInstance();	
+	public static String PERIODO = "";
+
+	Calendar c = Calendar.getInstance();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		
+		setContentView(R.layout.main);		
+
 		PERIODO = String.valueOf(c.get(Calendar.YEAR));
 		PERIODO += "_";
-		PERIODO += c.get(Calendar.MONTH) >= 7 ? "2": "1"; 
+		PERIODO += c.get(Calendar.MONTH) >= 7 ? "2" : "1";
 
 		handler = new Handler();
+		db = new DBManager(getApplicationContext());
 
 		connect = (Button) findViewById(R.id.connect);
 		matTxt = (EditText) findViewById(R.id.matTxt);
@@ -84,15 +81,16 @@ public class UezoNotasActivity extends Activity {
 					});
 			builder.show();
 		}
-
-		////////////////////////////////////////
+		
+		Intent service = new Intent(this, UpdateCheckService.class);
+		startService(service);
 
 		connect.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
 				progress = ProgressDialog.show(UezoNotasActivity.this,
 						"Conectando", "Aguarde...");
-				progress.setCancelable(true);
+				progress.setCancelable(false);
 
 				new Thread() {
 					@Override
@@ -100,26 +98,22 @@ public class UezoNotasActivity extends Activity {
 
 						try {
 
-							mat = "1111311005";//matTxt.getText().toString();
-							pwd = "RM123";//passwdTxt.getText().toString();
+							mat = "1111311005";// matTxt.getText().toString();
+							pwd = "RM123";// passwdTxt.getText().toString();
 
 							data.add(new BasicNameValuePair("username", mat));
 							data.add(new BasicNameValuePair("password", pwd));
 
 							try {
-								connection.connect(data, getApplicationContext());
+								String html = connection.connect(data);
+								ArrayList<ArrayList<String>> dadosHtml = filter
+										.datafilter(html,
+												getApplicationContext());
+								db.Open();
+								db.insertData(dadosHtml);
+								db.Close();
 
-							} catch (ClientProtocolException e) {
-								e.printStackTrace();
-							} catch (IOException e) {
-								e.printStackTrace();
-							} catch (KeyManagementException e) {
-								e.printStackTrace();
-							} catch (NoSuchAlgorithmException e) {
-								e.printStackTrace();
-							} catch (KeyStoreException e) {
-								e.printStackTrace();
-							} catch (UnrecoverableKeyException e) {
+							} catch (Exception e) {
 								e.printStackTrace();
 							}
 
@@ -132,7 +126,7 @@ public class UezoNotasActivity extends Activity {
 				}.start();
 			}
 
-		});
+		});	
 
 	}
 
@@ -156,7 +150,7 @@ public class UezoNotasActivity extends Activity {
 					auth.show();
 				} else {
 					Intent Grades = new Intent(UezoNotasActivity.this,
-							Grades.class);
+							Grades.class);					
 					startActivity(Grades);
 				}
 			}
@@ -180,16 +174,10 @@ public class UezoNotasActivity extends Activity {
 			final Dialog about = new Dialog(this);
 			about.setContentView(R.layout.about);
 
-			// about.setTitle("Sobre");
-			/*TextView app = (TextView) about.findViewById(R.about.app);
-			TextView appdesc = (TextView) about.findViewById(R.about.appdesc);*/
-
 			Button ok = (Button) about.findViewById(R.about.ok);
 			ok.setOnClickListener(new View.OnClickListener() {
-
 				public void onClick(View v) {
 					about.dismiss();
-
 				}
 			});
 			about.show();
@@ -197,18 +185,10 @@ public class UezoNotasActivity extends Activity {
 		case DEV:
 			final Dialog dev = new Dialog(this);
 			dev.setContentView(R.layout.dev);
-			// dev.setTitle("Desenvolvedor");
-			/*TextView developer = (TextView) dev.findViewById(R.dev.dev);
-			TextView devdesc = (TextView) dev.findViewById(R.dev.devdesc);
-			TextView devemail = (TextView) dev.findViewById(R.dev.devemail);
-			TextView colab = (TextView) dev.findViewById(R.dev.colab);*/
-
 			Button devOk = (Button) dev.findViewById(R.dev.devOk);
 			devOk.setOnClickListener(new View.OnClickListener() {
-
 				public void onClick(View v) {
 					dev.dismiss();
-
 				}
 			});
 			dev.show();

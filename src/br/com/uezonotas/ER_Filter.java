@@ -1,27 +1,28 @@
 package br.com.uezonotas;
 
+/*
+ * Autor: André Galdino da Silveira
+ *
+ * Coleta dados aplicando filtro no html da pagina usando expressões regulares.
+ * */
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 
 public class ER_Filter extends Activity {
 	
-	private DBManager db;
-
-	public void datafilter(String html, Context context) {
-		
-
-		db = new DBManager(context);
+	@SuppressWarnings("unchecked")
+	public ArrayList<ArrayList<String>> datafilter(String html, Context context) {	
 
 		@SuppressWarnings("unused")
 		String student = new String();
 		String tabela = new String();		
 		ArrayList<String> values = new ArrayList<String>();
-		ArrayList<ArrayList> data = new ArrayList<ArrayList>();
+		ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
 
 		Pattern tablePattern = Pattern.compile("<table.*?>(.*?)</table>",
 				Pattern.DOTALL);
@@ -46,9 +47,8 @@ public class ER_Filter extends Activity {
 			}
 		}
 		
-		db.Open();
-		db.insertData(data);
-		db.Close();
+		return data;	
+		
 	}
 
 }

@@ -9,10 +9,10 @@ package br.com.uezonotas;
 
 public final class R {
     public static final class about {
-        public static final int app=0x7f070000;
-        public static final int appdesc=0x7f070001;
-        public static final int ok=0x7f070003;
-        public static final int versao=0x7f070002;
+        public static final int app=0x7f080000;
+        public static final int appdesc=0x7f080001;
+        public static final int ok=0x7f080003;
+        public static final int versao=0x7f080002;
     }
     public static final class attr {
     }
@@ -20,37 +20,46 @@ public final class R {
         public static final int Red=0x7f060000;
     }
     public static final class dev {
-        public static final int colab=0x7f080003;
-        public static final int dev=0x7f080000;
-        public static final int devOk=0x7f080004;
-        public static final int devdesc=0x7f080001;
-        public static final int devemail=0x7f080002;
+        public static final int colab=0x7f090003;
+        public static final int dev=0x7f090000;
+        public static final int devOk=0x7f090004;
+        public static final int devdesc=0x7f090001;
+        public static final int devemail=0x7f090002;
     }
     public static final class drawable {
         public static final int background=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int marca_v_jpg=0x7f020002;
-        public static final int uezonotas=0x7f020003;
+        public static final int background2=0x7f020001;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int ic_menu_info_details=0x7f020004;
+        public static final int marca_v_jpg=0x7f020005;
+        public static final int menu=0x7f020006;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f090000;
-        public static final int LinearLayout2=0x7f090003;
-        public static final int RelativeLayout1=0x7f09000d;
-        public static final int codMateria=0x7f09000f;
-        public static final int connect=0x7f09000c;
-        public static final int inetok=0x7f090002;
-        public static final int inetstatus=0x7f090001;
-        public static final int linearLayout1=0x7f090009;
-        public static final int listAll=0x7f090008;
-        public static final int listMaterias=0x7f090006;
-        public static final int matTxt=0x7f09000a;
-        public static final int passwdTxt=0x7f09000b;
-        public static final int sobre=0x7f090010;
-        public static final int tabAll=0x7f090007;
-        public static final int tabPeriodo=0x7f090005;
-        public static final int tabhost=0x7f090004;
-        public static final int txtNmMateria=0x7f09000e;
-        public static final int webTeste=0x7f090011;
+        public static final int LinearLayout1=0x7f0a0000;
+        public static final int LinearLayout2=0x7f0a0003;
+        public static final int RelativeLayout01=0x7f0a000e;
+        public static final int RelativeLayout1=0x7f0a000d;
+        public static final int codMateria=0x7f0a0015;
+        public static final int connect=0x7f0a000c;
+        public static final int inetok=0x7f0a0002;
+        public static final int inetstatus=0x7f0a0001;
+        public static final int linearLayout1=0x7f0a0009;
+        public static final int listAll=0x7f0a0008;
+        public static final int listMaterias=0x7f0a0006;
+        public static final int matTxt=0x7f0a000a;
+        public static final int menu_settings=0x7f0a0017;
+        public static final int passwdTxt=0x7f0a000b;
+        public static final int relativeLayout2=0x7f0a000f;
+        public static final int sobre=0x7f0a0016;
+        public static final int tabAll=0x7f0a0007;
+        public static final int tabPeriodo=0x7f0a0005;
+        public static final int tabhost=0x7f0a0004;
+        public static final int textView2=0x7f0a0010;
+        public static final int textView3=0x7f0a0013;
+        public static final int textView4=0x7f0a0012;
+        public static final int textView5=0x7f0a0011;
+        public static final int txtNmMateria=0x7f0a0014;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -58,15 +67,34 @@ public final class R {
         public static final int dialog=0x7f030002;
         public static final int grades=0x7f030003;
         public static final int main=0x7f030004;
-        public static final int materias=0x7f030005;
-        public static final int materiasall=0x7f030006;
-        public static final int menu=0x7f030007;
-        public static final int teste=0x7f030008;
+        public static final int materiadetalhar=0x7f030005;
+        public static final int materias=0x7f030006;
+        public static final int materiasall=0x7f030007;
+        public static final int menu=0x7f030008;
+    }
+    public static final class matDet {
+        public static final int av1=0x7f0b0000;
+        public static final int av2=0x7f0b0001;
+        public static final int av3=0x7f0b0002;
+        public static final int cod=0x7f0b0007;
+        public static final int materia=0x7f0b0004;
+        public static final int media=0x7f0b0003;
+        public static final int periodo=0x7f0b0009;
+        public static final int professor=0x7f0b0006;
+        public static final int txtCod=0x7f0b000a;
+        public static final int txtMateria=0x7f0b0008;
+        public static final int txtPeriodo=0x7f0b000b;
+        public static final int txtProfessor=0x7f0b0005;
     }
     public static final class matall {
-        public static final int codMateria=0x7f0a0001;
-        public static final int periodo=0x7f0a0002;
-        public static final int txtNmMateria=0x7f0a0000;
+        public static final int codMateria=0x7f0c0000;
+        public static final int periodo=0x7f0c0002;
+        public static final int txtNmMateria=0x7f0c0001;
+    }
+    public static final class menu {
+        public static final int activity_main=0x7f070000;
+        public static final int activity_update_check_service=0x7f070001;
+        public static final int d=0x7f070002;
     }
     public static final class raw {
         public static final int mycert=0x7f040000;
@@ -81,9 +109,14 @@ public final class R {
         public static final int devdesc=0x7f050006;
         public static final int devemail=0x7f050007;
         public static final int hello=0x7f050000;
+        public static final int hello_world=0x7f05000c;
         public static final int inet=0x7f050002;
         public static final int matricula=0x7f050008;
+        public static final int menu_settings=0x7f05000d;
         public static final int senha=0x7f050009;
+        public static final int title_activity_main=0x7f05000e;
+        public static final int title_activity_mat_detalhar=0x7f05000f;
+        public static final int title_activity_update_check_service=0x7f050010;
         public static final int versao=0x7f05000a;
     }
 }

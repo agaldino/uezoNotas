@@ -8,6 +8,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
 	public static final String TABLE_NAME = "notas";
+	public static final String TEMP_TABLE_NAME = "tempnotas";
 	private static final String DATABASE_NAME = "notas.db";	
 
 	public static final String MATERIA = "CodMateria";
@@ -28,6 +29,16 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ AV1 + " text NULL,"
 			+ AV2 + " text NULL,"
 			+ AV3 + " text NULL,"
+			+ MEDIA + " text NULL" + "); ";
+	
+	public static final String CREATE_DB_TEMP = "CREATE TABLE " + TEMP_TABLE_NAME + " (" 
+			+ MATERIA + " text NULL,"
+			+ NM_MATERIA + " text NULL,"
+			+ PERIODO + " text NULL,"
+			+ PROF_MATERIA + " text NULL,"
+			+ AV1 + " text NULL,"
+			+ AV2 + " text NULL,"
+			+ AV3 + " text NULL,"
 			+ MEDIA + " text NULL" + ");";
 
 	public DBHelper(Context context) {
@@ -37,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(CREATE_DB);
-
+		db.execSQL(CREATE_DB_TEMP);
 	}
 
 	@Override

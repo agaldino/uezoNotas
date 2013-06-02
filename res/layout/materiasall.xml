@@ -6,26 +6,27 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+matall/txtNmMateria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
         android:id="@+matall/codMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+matall/txtNmMateria"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+matall/txtNmMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+matall/codMateria"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+matall/periodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+matall/txtNmMateria"
         android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
