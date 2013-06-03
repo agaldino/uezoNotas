@@ -34,7 +34,7 @@ public class UezoNotasActivity extends Activity {
 	TextView inet;
 	Button connect;
 	EditText matTxt, passwdTxt;
-	String mat, pwd;
+	//String mat, pwd;
 	Connection connection = new Connection();
 	List<NameValuePair> data = new ArrayList<NameValuePair>(1);
 	InternetConect ic = new InternetConect();
@@ -46,6 +46,9 @@ public class UezoNotasActivity extends Activity {
 	public static final int SOBRE = 0;
 	public static final int DEV = 1;
 	public static String PERIODO = "";
+	
+	public static String mat= "";
+	public static String pwd ="";
 
 	Calendar c = Calendar.getInstance();
 
@@ -98,8 +101,8 @@ public class UezoNotasActivity extends Activity {
 
 						try {
 
-							mat = "1111311005";// matTxt.getText().toString();
-							pwd = "RM123";// passwdTxt.getText().toString();
+							mat =  matTxt.getText().toString();
+							pwd =  passwdTxt.getText().toString();
 
 							data.add(new BasicNameValuePair("username", mat));
 							data.add(new BasicNameValuePair("password", pwd));
@@ -199,5 +202,11 @@ public class UezoNotasActivity extends Activity {
 		return false;
 
 	}
-
+	
+	public String getMat(){
+		return mat;
+	}
+	public String getPwd(){
+		return pwd;
+	}
 }

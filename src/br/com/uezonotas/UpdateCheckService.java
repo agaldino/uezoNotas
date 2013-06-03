@@ -57,8 +57,8 @@ public class UpdateCheckService extends Service {
 	class updateCheck extends TimerTask{		
 		public void run(){
 			try {			
-				userdata.add(new BasicNameValuePair("username", "1111311005")); 
-				userdata.add(new BasicNameValuePair("password", "RM123"));
+				userdata.add(new BasicNameValuePair("username", new UezoNotasActivity().getMat())); 
+				userdata.add(new BasicNameValuePair("password", new UezoNotasActivity().getPwd()));
 				String html = con.connect(userdata);
 				ArrayList<ArrayList<String>> dadosHtml = filter.datafilter(html,
 						getApplicationContext());
