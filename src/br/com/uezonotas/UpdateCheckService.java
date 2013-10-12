@@ -14,6 +14,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -24,7 +25,7 @@ public class UpdateCheckService extends Service {
 	Connection con = new Connection();
 	DBManager db;
 	ER_Filter filter = new ER_Filter();
-
+	public String username, passwd; 
 	List<NameValuePair> userdata = new ArrayList<NameValuePair>(1);
 	Cursor notas;
 	Cursor notastemp;
@@ -34,17 +35,18 @@ public class UpdateCheckService extends Service {
 	public void onCreate() {		
 		android.os.Debug.waitForDebugger();
 		mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		db = new DBManager(getApplicationContext());
+		db = new DBManager(getApplicationContext());		
 		Timer t = new Timer();	
 		TimerTask tk = new updateCheck();
-		t.scheduleAtFixedRate(tk, 600000, 600000);		
+		t.scheduleAtFixedRate(tk, 300000, 300000);
 		super.onCreate();
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		super.onStartCommand(intent, flags, startId);
-		
+		super.onStartCommand(intent, flags, startId);		
+		username = (String) intent.getExtras().get("username");
+		passwd = (String) intent.getExtras().get("password");
 		return START_STICKY;
 	}
 
@@ -56,9 +58,9 @@ public class UpdateCheckService extends Service {
 	
 	class updateCheck extends TimerTask{		
 		public void run(){
-			try {			
-				userdata.add(new BasicNameValuePair("username", new UezoNotasActivity().getMat())); 
-				userdata.add(new BasicNameValuePair("password", new UezoNotasActivity().getPwd()));
+			try {				
+				userdata.add(new BasicNameValuePair("username", username)); 
+				userdata.add(new BasicNameValuePair("password", passwd));
 				String html = con.connect(userdata);
 				ArrayList<ArrayList<String>> dadosHtml = filter.datafilter(html,
 						getApplicationContext());

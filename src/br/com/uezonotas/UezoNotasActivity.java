@@ -13,6 +13,8 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import br.com.uezonotas.UpdateCheckService.updateCheck;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -33,8 +35,7 @@ public class UezoNotasActivity extends Activity {
 
 	TextView inet;
 	Button connect;
-	EditText matTxt, passwdTxt;
-	//String mat, pwd;
+	EditText matTxt, passwdTxt;	
 	Connection connection = new Connection();
 	List<NameValuePair> data = new ArrayList<NameValuePair>(1);
 	InternetConect ic = new InternetConect();
@@ -45,10 +46,9 @@ public class UezoNotasActivity extends Activity {
 
 	public static final int SOBRE = 0;
 	public static final int DEV = 1;
-	public static String PERIODO = "";
+	public static String PERIODO = "";	
+	public static String mat,pwd;
 	
-	public static String mat= "";
-	public static String pwd ="";
 
 	Calendar c = Calendar.getInstance();
 
@@ -85,9 +85,6 @@ public class UezoNotasActivity extends Activity {
 			builder.show();
 		}
 		
-		Intent service = new Intent(this, UpdateCheckService.class);
-		startService(service);
-
 		connect.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -130,6 +127,11 @@ public class UezoNotasActivity extends Activity {
 			}
 
 		});	
+		Intent service = new Intent(this, UpdateCheckService.class);
+		Bundle b = new Bundle();		
+		service.putExtra("username", mat);
+		service.putExtra("password", pwd);				
+		this.startService(service);
 
 	}
 

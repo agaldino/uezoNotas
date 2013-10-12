@@ -45,9 +45,9 @@ public class Connection {
 	HttpGet httpget;	
 	public static Cookie cookie = null;
 	public static String url = "https://www.uezo.rj.gov.br/aluno/log_in_aluno.php";
+	public static String urlNotas = "https://www.uezo.rj.gov.br/aluno/boletim_aluno_b.php";
 	List<Cookie> Cookies;
 	
-	public static String urlNotas = "https://www.uezo.rj.gov.br/aluno/boletim_aluno_b.php";
 	
 	ER_Filter filter = new ER_Filter();
 
@@ -68,7 +68,7 @@ public class Connection {
 
 		HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 		
-		ClientConnectionManager cm = new SingleClientConnManager(params,schemeRegistry);
+		ClientConnectionManager cm = new SingleClientConnManager(params,schemeRegistry);		
 
 		// HttpClient da conexão
 		this.client = new DefaultHttpClient(cm, params);
@@ -85,13 +85,12 @@ public class Connection {
 		}
 
 		// Get da pagina
-		httpget = new HttpGet(urlNotas);
+		httpget = new HttpGet(urlNotas); 
 		HttpResponse get = client.execute(httpget);
 		HttpEntity entity = get.getEntity();
 		String html = EntityUtils.toString(entity);
 		
-		client.getConnectionManager().shutdown();
-		
+		client.getConnectionManager().shutdown();	
 		return html;
 
 	}
